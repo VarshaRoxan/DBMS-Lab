@@ -25,3 +25,40 @@ select card_num from book_lending where date_out between "2018:01:20" and "2018:
 
 
 3)
+delete from book where book_id=3;
++---------+-----------+----------+----------+
+| book_id | title     | pub_name | pub_year |
++---------+-----------+----------+----------+
+|       1 | achieve   | ashley   |     1997 |
+|       2 | bravery   | brandon  |     1998 |
+|       4 | daring    | damon    |     2000 |
+|       5 | earlier   | emen     |     2001 |
++---------+-----------+----------+----------+
+
+
+4)
+create view v_pub as select pub_year from book;
+select * from v_pub;
++----------+
+| pub_year |
++----------+
+|     1997 |
+|     1998 |
+|     1999 |
+|     2000 |
+|     2001 |
++----------+
+
+
+5)
+create view v_books as select b.book_id, b.title, c.copies from book b, book_copies c, lib_branch l where b.book_id=c.book_id and c.branch_id=l.branch_id;
+select * from v_books;
++---------+-----------+--------+
+| book_id | title     | copies |
++---------+-----------+--------+
+|       1 | achieve   |     10 |
+|       2 | bravery   |     20 |
+|       3 | challenge |     30 |
+|       4 | daring    |     40 |
+|       5 | earlier   |     50 |
++---------+-----------+--------+
