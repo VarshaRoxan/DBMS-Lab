@@ -1,0 +1,27 @@
+1)
+Select B.book_id, B.title, B.pub_name, A.author_name, C.copies, L.branch_id from book B, book_author A, book_copies C, lib_branch L where B.book_id=A.book_id and B.book_id=C.book_id and L.branch_id=C.branch_id;
++---------+-----------+----------+-------------+--------+-----------+
+| book_id | title     | pub_name | author_name | copies | branch_id |
++---------+-----------+----------+-------------+--------+-----------+
+|       1 | achieve   | ashley   | ashley      |     10 |         1 |
+|       2 | bravery   | brandon  | brandon     |     20 |         2 |
+|       3 | challenge | chelsi   | chelsi      |     30 |         3 |
+|       4 | daring    | damon    | damon       |     40 |         4 |
+|       5 | earlier   | emen     | emen        |     50 |         5 |
++---------+-----------+----------+-------------+--------+-----------+
+
+
+2)
+select card_num from book_lending where date_out between "2018:01:20" and "2018:08:30" group by card_num having count(*)>3;
++----------+
+| card_num |
++----------+
+|        1 |
+|        2 |
+|        3 |
+|        4 |
+|        5 |
++----------+
+
+
+3)
