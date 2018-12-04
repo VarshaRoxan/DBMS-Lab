@@ -1,0 +1,46 @@
+select distinct s.sname
+   from student s, class c, enrolled e, faculty f
+   where s.snum = e.snum and e.cname = c.name and c.fid = f.fid and
+   f.fname = ‘i.teach’ and s.level = ‘jr’;
+
+
+
+
+elect c.name
+    from class c
+    where c.room = ‘r128’
+    or c.name in (select e.cname
+                              from enrolled e
+                              group by e.cname
+                              having count (*) >= 5);
+
+
+
+select distinct s.sname
+    from student s
+    where s.snum in (select e1.snum
+                                       from enrolled e1, enrolled e2, class c1, class c2
+                                       where e1.snum = e2.snum and e1.cname <> e2.cname
+                                       and e1.cname = c1.name
+                                       and e2.cname = c2.name and c1.meets at = c2.meets at);
+
+
+
+
+
+
+????????????
+
+
+
+select distinct f.fname
+    from faculty f
+    where 5 > (select count (e.snum)
+                           from class c, enrolled e
+                          where c.name = e.cname
+                          and c.fid = f.fid);
+
+
+
+................................................................................
+
